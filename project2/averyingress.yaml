@@ -4,8 +4,13 @@ metadata:
   name: averypage-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letsencrypt
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - averyfans.com
+    secretName: cloudflare-api-key-secret
   rules:
   - host: averyfans.com
     http:
